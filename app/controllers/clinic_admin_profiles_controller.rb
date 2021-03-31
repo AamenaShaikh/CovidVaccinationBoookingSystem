@@ -1,0 +1,2 @@
+class ClinicAdminProfilesController < ApplicationController
+end

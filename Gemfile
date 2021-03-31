@@ -9,6 +9,15 @@ gem 'rails', '~> 6.1.3'
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
+gem 'rolify'
+gem 'devise'
+gem 'bootstrap-datepicker-rails' 
+gem 'bootstrap_progressbar'
+gem 'bootstrap-sass'
+gem 'sassc-rails'
+gem 'validates_timeliness'
+gem 'image_processing'
+gem 'mini_magick'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -34,6 +43,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'pry-rails'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.

@@ -1,0 +1,44 @@
+<br>
+<h2>Doctor Schedule</h2>
+<%= form_for @doctor_schedule do |f| %>
+  
+  <div class="field">
+    <% u_id = current_doctor.id %>
+    <%= f.hidden_field :doctor_id, value: u_id %>
+  </div>
+
+  <div class="field">
+    <% u_id = current_doctor.id %>
+    <%= f.hidden_field :created_by, value: u_id %>
+  </div>
+
+  <div class="field">
+    <% status = 1 %>
+    <%= f.hidden_field :status, value: status %>
+  </div>
+
+  <div class="field">
+    <%= label :date, 'Date' %><br>
+    <%= f.date_field :date, data:{ provide:'datepicker' }, min: Date.today, required: true%>
+  </div>
+<br>
+  <div class="field">
+    <%= label :start_time, 'Start Time' %><br>
+    <%= f.time_field :start_time, value: "%H:%M", min: 'hh:mm:ss', max: 'hh:mm:ss' %>
+  </div>
+<br>
+  <div class="field">
+    <%= label :end_time, 'End Time' %><br>
+    <%= f.time_field :end_time, value: "%H:%M", min: 'hh:mm:ss', max: 'hh:mm:ss' %>
+  </div>
+<br>
+  <div class="field">
+    <%= label :clinic_id, 'Select Hospital' %><br>
+    <%= f.select :clinic_id, options_from_collection_for_select(Clinic.all, "id", "name") %>
+  </div>
+<br>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+
+<% end %>

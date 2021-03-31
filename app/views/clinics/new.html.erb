@@ -1,0 +1,39 @@
+<br><br>
+<h2>Add Clinic</h2>
+<%= form_for @clinic do |f| %>
+  
+  <div class="field">
+    <% u_id = current_clinic_admin.id %>
+    <%= f.hidden_field :clinic_admin_id, value: u_id %>
+  </div>
+  
+  <div class="field">
+    <%= label :name, 'Clinic Name' %><br>
+     <%= f.text_field :name, autofocus: true, autocomplete: "name", required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number,'Phone Number' %><br />
+    <%= f.telephone_field :phone_number, maxlength: 10, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, 'Email' %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
+  </div>
+
+  <div class="field">
+    <%= label :start_time, 'Start Time' %><br>
+    <%= f.time_field :start_time, value: "%l:%M:%p", min: 'hh:mm:ss', max: 'hh:mm:ss' %>
+  </div>
+<br>
+  <div class="field">
+    <%= label :start_time, 'End Time' %><br>
+   <%= f.time_field :end_time, value: "%H:%M", min: 'hh:mm:ss', max: 'hh:mm:ss' %>
+  </div>
+<br>
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+
+<% end %>

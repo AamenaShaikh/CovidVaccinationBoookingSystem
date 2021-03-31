@@ -1,0 +1,2 @@
+module RelativePeopleHelper
+end
