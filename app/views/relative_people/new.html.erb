@@ -1,0 +1,64 @@
+<br>
+<h2>Relative Registration</h2>
+
+<%= form_for(:relative_people, url: relative_people_path) do |f| %>
+  
+  <div class="field">
+    <% is_relative = true %>
+    <%= f.hidden_field :is_relative, value: is_relative %>
+  </div>
+
+  <div class="field">
+    <% mobile_no = current_user.phone_number %>
+    <%= f.hidden_field :phone_number, value: mobile_no %>
+  </div>
+
+  <div class="field">
+    <% parent_id = current_user.id %>
+    <%= f.hidden_field :parent_id, value: parent_id %>
+  </div>
+
+  <div class="field">
+    <% is_relative = false %>
+    <%= f.hidden_field :is_relative, value: true %>
+  </div>
+
+  <div class="field">
+    <% password = current_user.password %>
+    <%= f.hidden_field :password, value: password %>
+    <%= f.hidden_field :password_confirmation, value: password %>
+  </div>
+
+   <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", required: true %>
+  </div>
+
+   <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", required: true %>
+  </div>
+
+   <div class="field">
+    <%= f.label :aadhar_number %><br />
+    <%= f.number_field :aadhar_number, autofocus: true, autocomplete: "aadhar_number", maxlength: 10, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.radio_button :gender, 'Male', :checked => true, required: true %> 
+    <%= label :Male, 'Male' %>
+    <%= f.radio_button :gender, 'Female' %>
+    <%= label :Female, 'Female' %>
+    <%= f.radio_button :gender, 'Other' %>
+    <%= label :Female, 'Other' %>
+  </div>
+
+  <div class="field">
+    <%= label :date_of_birth, 'Date Of Birth' %><br>
+    <%= f.date_field :date_of_birth, data:{ provide:'datepicker' }, max: Date.new(2016, 01, 01) , required: true%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Register" %>
+  </div>
+<% end %>

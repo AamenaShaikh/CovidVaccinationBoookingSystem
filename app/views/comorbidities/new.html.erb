@@ -1,0 +1,24 @@
+<br><br>
+<h2>Enter medical History</h2>
+<%= progress_bar 1.0 , style: 'min-width: 20px' %>
+<%= form_for @comorbidity do |f| %>
+
+  <div class="field">
+    <% u_id = current_user.id %>
+    <%= f.hidden_field :patient_id, value: u_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :disease_description %><br />
+    <%= f.text_area :disease_description, autofocus: true, autocomplete: "disease_description" %>
+  </div>
+
+  <span class="image">
+    <%= f.file_field :report_file %>
+  </span>
+
+  <div class="actions">
+    <%= f.submit "Send" %>
+  </div>
+
+<% end %>

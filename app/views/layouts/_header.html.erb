@@ -1,0 +1,22 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+	<div class="container">
+		<nav>
+			<ul class="nav navbar-nav navbar-right">
+				<% if current_user %>
+					<li><%= link_to "Log Out", destroy_user_session_path, method: "delete" %></li>
+				<% elsif current_doctor %>
+					<li><%= link_to "Log Out", destroy_doctor_session_path, method: "delete" %></li>
+				<% elsif current_clinic_admin %>
+					<li><%= link_to "Log Out", destroy_clinic_admin_session_path, method: "delete" %></li>
+				<% else %>
+					<li><%= link_to "Patient Registration", new_user_registration_path %></li>
+					<li><%= link_to "Patient Log in", new_user_session_path %></li>
+					<li><%= link_to "Doctor Registration", new_doctor_registration_path %></li>
+					<li><%= link_to "Doctor Log in", new_doctor_session_path %></li>
+					<li><%= link_to "Admin Registration", new_clinic_admin_registration_path %></li>
+					<li><%= link_to "Admin Log in", new_clinic_admin_session_path %></li>
+				<% end %>
+			</ul>
+		</nav>
+	</div>
+</header>

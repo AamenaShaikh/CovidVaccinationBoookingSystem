@@ -1,0 +1,32 @@
+<h2>Please add some more details </h2>
+
+<%= progress_bar 0.5, style: 'min-width: 20px' %>
+
+<%= form_for @patient_profile do |f| %> 
+  <div class="field">
+    <% u_id = current_user.id %>
+    <%= f.hidden_field :user_id, value: u_id %>
+  </div>
+
+  <div class="field">
+    <%= f.hidden_field :status, value: 'registered' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :id_proof %><br />
+    <%= f.text_field :id_proof, autofocus: true, autocomplete: "id_proof" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :having_comorbidities %><br />
+    <%= f.radio_button :having_comorbidities, 'true', :checked => true %> 
+    <%= label :Yes, 'Yes' %>
+    <%= f.radio_button :having_comorbidities, 'false' %>
+    <%= label :No, 'No' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Register" %>
+  </div>
+
+<% end %>

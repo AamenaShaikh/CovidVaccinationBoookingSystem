@@ -1,0 +1,40 @@
+<style>
+    td,th { padding-bottom: 10px; }
+</style>
+<br>
+<h2> Welcome </h2>
+<h2> <%= current_user.first_name %> </h2>
+<% status = @patient_profile.status %>
+<table width="90%", style="font-size:17px;line-height:44px;">
+	<thead>
+		<th> Name </th>
+		<th> Gender </th>
+		<th> Date Of Birth </th>
+		<th> Status </th>
+		<th> Action </th>
+	</thead>
+	<tr>
+		<td padding ><%= current_user.first_name %>  
+		<%= current_user.last_name %> </td>
+		<td> <%= current_user.gender %> </td>
+		<td> <%= current_user.date_of_birth %> </td>
+		<td> <%= status %> </td>
+		<td> <%= link_to "Delete", user_registration_path , data: { confirm: "Are you sure?" }, method: :delete %> 
+		<%= link_to "Update", edit_user_registration_path %> </td>
+	</tr>
+	<% @relatives && @relatives.each do |child| %>
+		<tr>
+			<td padding ><%= child.first_name %>
+				<%= child.last_name %></td>
+			<td> <%= child.gender %> </td>
+			<td> <%= child.date_of_birth %> </td>
+			<td>  <%= status %> </td>
+			<td> <%= link_to "Delete", user_registration_path , data: { confirm: "Are you sure?" }, method: :delete %> 
+			<%= link_to "Update", edit_user_registration_path %> </td>
+		</tr>
+	<% end %>
+</table>
+
+<% if @relatives.count <= 1 %>
+	<%= button_to "Add Relative", new_relative_people_path, method: :get %>
+<% end %>
